@@ -1,13 +1,56 @@
-<?php
-   include("header.php");
-   set_time_limit(0);
-   $client = new SoapClient('http://localhost:8080/smb214-JAX-WS/smbws?WSDL');
-   //$response = $client->getCarnet($requestParams);
-   $response = $client->getSchoolYear();
-   
-   echo $client->__getLastResponse();
-?>
-<a href="carnet.php?user_student_id=<?php echo $_SESSION["user_student_id"]; ?>">Afficher mon carnet</a>
+<?php   
+    include("header.php");
+ ?>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#school_year").change(function(){
+            $("#exam").removeAttr("disabled");
+            $.ajax({
+                url:"getExamList.php",
+                type:"POST",
+                data:{
+                    school_year_id: $("#school_year").val(),
+                },
+                success: function (jsonStr) {
+                    $("#exam").append(jsonStr);
+                }
+            });
+        }); 
+    });
+</script>
+
+<form action="carnet.php" method="get">
+    <table>
+        <tr>
+            <td>Select Year</td>
+            <td>
+                <select name="school_year_id" id="school_year">
+                    <option value="">Please select</option>
+                    <?php
+                        set_time_limit(0);
+                        $response = $soap_wsdl->getSchoolYear();
+                        foreach ($response->return as $item) {
+                            echo "<option value=\"".$item->school_year_id."\">".$item->school_year_name."</option>";
+                        }                       
+                    ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Select Exam</td>
+            <td>
+                <select name="exam_id" id="exam" disabled>
+                    <option value="">Please select</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Submit" name="Submit" />        
+            </td>
+        </tr>
+    </table>
+</form>
 <br>
 <a href="logout.php">Quitter</a>
 <?php

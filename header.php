@@ -10,7 +10,7 @@
         <!-- EO CSS -->
 		
         <!-- JQuerry -->
-        <script src="/jquery-1.11.0.js"></script>
+        <script src="jquery-1.11.0.js"></script>
         <!-- EO JQuerry -->
     </head>
     <body>

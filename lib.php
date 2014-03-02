@@ -16,5 +16,5 @@ function dbconnect(){
     mysqli_query($link,$sSQL);
     return $link;
 }
-
+$soap_wsdl = new SoapClient('http://localhost:8080/smb214-JAX-WS/smbws?WSDL');
 ?>
