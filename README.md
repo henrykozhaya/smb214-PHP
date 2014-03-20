@@ -4,7 +4,24 @@ smb214-PHP
 <h3>I. Introduction:</h3>
 Les Services Web sont un moyen de communication qui permet une bonne fonctionnalité entre les différentes applications sur différentes plates-formes. Notre exemple est de faire communiquer un site web développé en PHP avec les services web développés en JAVA.
 
-Pour identifier la liste des fonctions et le type des paramètres et des résultats, nous utilisons les fichier WSDL (Web Services Description Language) et le XSD fourni par le développeur des services Web.
+Pour identifier la liste des fonctions et le type des paramètres, nous utilisons les fichier WSDL (Web Services Description Language) et le XSD fourni par le développeur des services Web.
+wsdl: la liste des fonctions
+xsd: la liste des parametres et leurs types
+
+Exemple:
+$soap_wsdl = new SoapClient('http://localhost:8080/smb214-JAX-WS/smbws?WSDL'); // C'est le lien vers le wsdl file fourni par le développeur du service web
+
+$param1 = 1;        //le premier paramètre à envoyer
+$param2 = "Hello";  //le deuxième paramètre à envoyer
+$param = array('param1'=>$param1, 'param2' => $param2); //la liste de paramètres à envoyer
+
+$response = $soap_wsdl -> FUNCTION_NAME($param); //appel de la fonction à distance
+
+foreach ($response as $item) {
+        $item->reponse1; //récupération des réponses
+        $item->reponse2;
+    } 
+
 
 <h3>II. L'exemple:</h3>
 C'est un petit site web en PHP qui a le role d'afficher les notes d'un élève appartenantes à une année scolaire et puis en examen spécifique. Ce site est déployé dans un serveur Apache qui à son tour communique avec une base de données installée sur un nouveau serveur MySQL
