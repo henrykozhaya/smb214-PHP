@@ -2,10 +2,12 @@ smb214-PHP
 ==========
 
 <h3>I. Introduction:</h3>
-C'est un petit site web en PHP qui a le role d'afficher les notes d'un élève appartenantes à une année scolaire et puis en examen spécifique.
+Les Services Web sont un moyen de communication qui permet une bonne fonctionnalité entre les différentes applications sur différentes plates-formes. Notre exemple est de faire communiquer un site web développé en PHP avec les services web développés en JAVA.
 
-<h3>II. Architecture:</h3>
-Ce site est déployé dans un serveur Apache qui à son tour communique avec une base de données installée sur un nouveau serveur MySQL
+Pour identifier la liste des fonctions et le type des paramètres et des résultats, nous utilisons les fichier WSDL (Web Services Description Language) et le XSD fourni par le développeur des services Web.
+
+<h3>II. L'exemple:</h3>
+C'est un petit site web en PHP qui a le role d'afficher les notes d'un élève appartenantes à une année scolaire et puis en examen spécifique. Ce site est déployé dans un serveur Apache qui à son tour communique avec une base de données installée sur un nouveau serveur MySQL
 
 <h3>III. La base de données:</h3>
 La base de données de ce site ne contient qu'une table d'utilisateur "user" qui contient le mot d'usager, le mot de passe, l'id de l'élève dans la base de données de l'école.
