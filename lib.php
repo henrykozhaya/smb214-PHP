@@ -3,11 +3,15 @@ session_start();
 if(!isset($_SESSION["isloggedin"])){
         $_SESSION["isloggedin"] = false;
 }
-
-if(!$_SESSION["isloggedin"]){
-        if($_SERVER['PHP_SELF']!="/smb214-PHP-master/login.php"){
-                header("location:login.php");
-        }
+if(!$_SESSION["isloggedin"]){  
+    if($_SERVER['PHP_SELF']!="/smb214-PHP/login.php"){
+        header("location:login.php");
+    }
+}
+else{
+    if($_SERVER['PHP_SELF']=="/smb214-PHP/login.php"){
+        header("location:index.php");
+    }    
 }
 	
 function dbconnect(){

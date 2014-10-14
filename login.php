@@ -1,8 +1,6 @@
 <?php
     include("header.php");
-    if($_SESSION["isloggedin"]){
-            header("location:index.php");
-    }	
+
     if(isset($_POST["username"])){
 
     $link = dbconnect();
